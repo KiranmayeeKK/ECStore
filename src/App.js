@@ -9,6 +9,7 @@ import Header from './Header/Header.js'
 //import  all the pages from the pages folder to add them to page routing
 import Register from './Pages/Register.js'
 import Home from './Pages/Home.js'
+import Checkout from './Pages/Checkout.js'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Header/>
         <Switch>
           <Route path="/checkout">
+            <Checkout/>
           </Route>
           <Route path="/register">
             <Register/>

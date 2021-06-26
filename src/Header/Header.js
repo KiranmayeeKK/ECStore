@@ -6,19 +6,20 @@ import {Link} from 'react-router-dom'
 import './Header.css'
 
 import ECSIcon from './../Icon/ECSIcon.png'
-import { ShoppingBasket } from '@material-ui/icons'
 
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 
 function Header(){
     return[
         <nav className="header">
-            <img className="header__logo" alt = "logo" src={ECSIcon}/>
+                <Link to="/">
+                    <img className="header__ECSIcon" src={ECSIcon} alt="Logo"/>
+                </Link>
             <div className="header__search">
                 <input type="text" className="header__searchInput" />
                 <SearchIcon className="header__searchIcon" />
             </div>
-            <Link to="/" className="header__link">
+            <Link to="/register" className="header__link">
                 <div className="header__option">
                     <span className="header__optionLineOne">Register</span>
                 </div>

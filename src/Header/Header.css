@@ -8,11 +8,11 @@
     justify-content: space-evenly;
 }
 
-.header__logo{
+.header__ECSIcon{
     width: 100px;
     margin: 0 20px;
-    margin-top: 18px;
-    margin-bottom: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     object-fit: contain;
 }
 

@@ -1,12 +1,19 @@
 import React from 'react'
 import { useStateValue } from '../Reducer/StateProvider'
 
+import { useHistory } from 'react-router-dom'
+
 import './Product.css'
 
 function Product({id, title, image, price, rating}){
     const [{basket}, dispatch] = useStateValue()
     console.log('basket content', basket)
+    let history = useHistory()
     const addToBasket = () => {
+        if(basket.length == 0) {
+            history.push("/register");
+        }
+        else {
         dispatch({
         type: 'ADD_TO_BASKET',
         item: {
@@ -17,6 +24,7 @@ function Product({id, title, image, price, rating}){
             rating: rating
         }
         })
+        }
     }
     return (
         <div className="product">

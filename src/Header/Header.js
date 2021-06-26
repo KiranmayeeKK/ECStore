@@ -8,9 +8,14 @@ import './Header.css'
 import ECSIcon from './../Icon/ECSIcon.png'
 
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
+import { useStateValue } from '../Reducer/StateProvider'
 
 function Header(){
-    return[
+
+    const[{basket}, dispatch] = useStateValue();
+    console.log("my basket", basket);
+
+    return(
         <nav className="header">
                 <Link to="/">
                     <img className="header__ECSIcon" src={ECSIcon} alt="Logo"/>
@@ -28,12 +33,12 @@ function Header(){
             <Link to="/checkout" className="header__link">
                 <div className="header__optionBasket">
                     <ShoppingBasketIcon/>
-                    <span className="header__basketCount">2</span>
+                    <span className="header__productCount">{basket?.length}</span>
                 </div>
             
             </Link>
         </nav>
-    ]
+    )
 }
 
 export default Header;

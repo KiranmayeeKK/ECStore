@@ -51,7 +51,15 @@
     align-items: center;
 }
 
-.header__basketCount{
-    margin-left: 10px;
+.header__optionBasket a{
+    cursor: pointer;
+}
+
+.header__optionBasket a:hover{
+    border: 1px solid #fff;
+    border-radius: 3px;
+}
+
+.header__productCount{
     margin-right: 10px;
 }

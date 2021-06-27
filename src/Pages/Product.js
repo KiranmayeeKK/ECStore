@@ -10,10 +10,12 @@ function Product({id, title, image, price, rating}){
     console.log('basket content', basket)
     let history = useHistory()
     const addToBasket = () => {
+       /* //check if this is the first item added to the cart, if so redirect to registration page
         if(basket.length == 0) {
             history.push("/register");
         }
-        else {
+        //otherwise add the items to the cart
+        else { */
         dispatch({
         type: 'ADD_TO_BASKET',
         item: {
@@ -24,7 +26,7 @@ function Product({id, title, image, price, rating}){
             rating: rating
         }
         })
-        }
+     //   }
     }
     return (
         <div className="product">

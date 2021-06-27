@@ -12,7 +12,7 @@ function Subtotal(){
         <CurrencyFormat
         renderText = {(value) => (
             <p>
-                Subtotal({basket.length} items) : <strong>{'€{value}'}</strong>
+                Subtotal({basket.length} items) : <strong>{value}</strong>
             </p>
         )}
         decimalScale={2}

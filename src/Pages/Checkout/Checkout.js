@@ -4,6 +4,7 @@ import Subtotal from './Subtotal.js'
 import {useStateValue} from './../../Reducer/StateProvider'
 import ProductCart from './ProductCart'
 import {Link} from 'react-router-dom'
+import './Checkout.css'
 
 function Checkout(){
 

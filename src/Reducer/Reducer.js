@@ -1,6 +1,7 @@
 export const initialState = {
     basket:[],
-    isVerified: false
+    isVerified: false,
+    selectedCredentialFile: null
 }
 
 const reducer = (state,action) => {
@@ -20,6 +21,17 @@ const reducer = (state,action) => {
                console.log("There eas an error removing item from the cart");
            }
            return {...state, basket: newcart}
+
+           case 'SELECT_FILE':
+               return {
+                ...state,
+                selectedCredentialFile: action.file
+               }
+            case 'SET_IS_VERIFIED':
+                return {
+                    ...state,
+                    isVerified: action.value
+                   }
     }
 }
 

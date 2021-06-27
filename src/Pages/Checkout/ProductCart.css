@@ -30,3 +30,8 @@
     border-color: #a88734 #9c7e31 #846a29;
 
 }
+
+.productcart__agelimit_text {
+    color:red;
+    font-size: 12px;
+}

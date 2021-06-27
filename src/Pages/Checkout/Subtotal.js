@@ -5,7 +5,11 @@ import {useStateValue} from './../../Reducer/StateProvider'
 function Subtotal(){
     const getCartTotal = (basket) =>
     basket?.reduce((amount,item) => item.price + amount, 0);
-    const [{basket}, dispatch] = useStateValue();
+    const [{basket, isVerified}, dispatch] = useStateValue();
+
+    let flagAgeLimit = 0
+    
+    basket.map(item => item.hasAgeLimit =="true"? flagAgeLimit= flagAgeLimit+1 : <p></p>)
 
     return(<div className="subtotal">
         {/* computing price*/}
@@ -21,7 +25,17 @@ function Subtotal(){
         thousandSeperator ={true}
         prefix= {"€"}
         />
-        <button>Proceed to Checkout</button>
+        
+        {
+             flagAgeLimit > 0 &&  
+            <div>           
+                 <input type="file" name="credentialFile"/>
+                 <button onClick="uploadCredentialFile">Upload</button>
+             </div>
+        }
+        {
+              (flagAgeLimit == 0 || isVerified ) &&  <button>Proceed to Checkout</button>
+        }
     </div>
     )
 }

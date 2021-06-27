@@ -2,8 +2,8 @@ import React from 'react'
 import './ProductCart.css'
 import {useStateValue} from './../../Reducer/StateProvider'
 
-function ProductCart({id,title,image,price,rating}){
-    const [{basket}, dispatch] = useStateValue()
+function ProductCart({id,title,image,price,rating,hasAgeLimit}){
+    const [{basket, isVerified}, dispatch] = useStateValue()
 
     const removeItem =() => {
         dispatch({
@@ -27,6 +27,12 @@ function ProductCart({id,title,image,price,rating}){
                 }
             </div>
             <button onClick={removeItem}>Remove from the cart</button>
+            {
+               hasAgeLimit=="true"&& !isVerified &&
+               <div>
+               <p>This item has age limit, please provide identity</p>
+               </div>
+            }
             </div>
         </div>
     )

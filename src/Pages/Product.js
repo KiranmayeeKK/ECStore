@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 
 import './Product.css'
 
-function Product({id, title, image, price, rating}){
+function Product({id, title, image, price, rating, hasAgeLimit}){
     const [{basket}, dispatch] = useStateValue()
     console.log('basket content', basket)
     let history = useHistory()
@@ -23,7 +23,8 @@ function Product({id, title, image, price, rating}){
             title: title,
             image: image,
             price: price,
-            rating: rating
+            rating: rating,
+            hasAgeLimit: hasAgeLimit
         }
         })
      //   }

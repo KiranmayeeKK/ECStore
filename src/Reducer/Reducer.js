@@ -1,5 +1,6 @@
 export const initialState = {
-    basket:[]
+    basket:[],
+    isVerified: false
 }
 
 const reducer = (state,action) => {

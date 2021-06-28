@@ -30,12 +30,11 @@ function Subtotal(){
     basket.map(item => item.hasAgeLimit =="true"? flagAgeLimit= flagAgeLimit+1 : <p></p>)
 
       const selectFile =async(event) => {
-           
-          console.log("File read started");
+    /*      console.log("File read started");
        let fileObj =  await readFileAsync(event.target.files[0]);
        console.log("File read finished");
     
-        let checkJSON = JSON.parse(fileObj);
+        let checkJSON = JSON.parse(fileObj); */
     //    console.log("original string" + JSON.stringify(checkJSON));
      //   console.log("print JSON" + JSON.stringify(checkJSON['verifiableCredentials']));
        // console.log("print JSON123" + JSON.stringify(checkJSON.verifiableCredentials));
@@ -48,9 +47,9 @@ function Subtotal(){
      const uploadCredentialFile = async() => {
          
             console.log("uploading to server");
-            console.log("File read started");
+    //        console.log("File read started");
             let fileObj =  await readFileAsync(selectedCredentialFile);
-            console.log("File read finished");
+    //        console.log("File read finished");
             const headers = {
                 'Content-Type': 'application/json',
               }
@@ -62,13 +61,16 @@ function Subtotal(){
            // receive two    parameter endpoint url ,form data
        })
      .then(res => { 
-   //      console.log(res.data)
-        res.data == "verified" && 
+        console.log("Response from server" + res.data)
+        res.data == "valid" && 
         dispatch({
             type: 'SET_IS_VERIFIED',
             value: true
         }        )
       })
+      .catch(error => {
+        console.log(error.response)
+    });
      }
 
     return(<div className="subtotal">

@@ -3,7 +3,7 @@
 
 ## Configuration
 1. Create .env file in both ecs_server and ecs_client folders
-2. In ecs_client/.env file, initialize REACT_APP_SERVER_URL variable to backend server checkCredential page
+2. In ecs_client/.env file, initialize REACT_APP_SERVER_URL variable to backend server `checkCredential` page
 3. In ecs_server/.env file initialize the following variables
 PORT, SSI_BRIDGE_URL
 4. create SSL certificate and key for server, copy it to both ecs_server and ecs_client if both are running on same server, otherwise create two different sets of certificates and keys

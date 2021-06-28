@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import CurrencyFormat from 'react-currency-format'
 import {useStateValue} from './../../Reducer/StateProvider'  
 import axios from 'axios'
@@ -10,30 +10,55 @@ function Subtotal(){
     const getCartTotal = (basket) =>
     basket?.reduce((amount,item) => item.price + amount, 0);
     const [{basket, isVerified, selectedCredentialFile}, dispatch] = useStateValue();
-
     let flagAgeLimit = 0
+
+    const formData = new FormData();
+    function readFileAsync(file) {
+        return new Promise((resolve, reject) => {
+          let reader = new FileReader();
+      
+          reader.onload = () => {
+            resolve(reader.result);
+          };
+      
+          reader.onerror = reject;
+      
+          reader.readAsText(file);
+        })
+      }
     
     basket.map(item => item.hasAgeLimit =="true"? flagAgeLimit= flagAgeLimit+1 : <p></p>)
 
-      const selectFile =(event) => {
+      const selectFile =async(event) => {
+           
+          console.log("File read started");
+       let fileObj =  await readFileAsync(event.target.files[0]);
+       console.log("File read finished");
+    
+        let checkJSON = JSON.parse(fileObj);
+    //    console.log("original string" + JSON.stringify(checkJSON));
+     //   console.log("print JSON" + JSON.stringify(checkJSON['verifiableCredentials']));
+       // console.log("print JSON123" + JSON.stringify(checkJSON.verifiableCredentials));
+        
         dispatch({
             type: 'SELECT_FILE',
             file: event.target.files[0]
         })
     }
-/*
-    const setIsVerified = () => {
-        dispatch({
-            type: 'SET_IS_VERIFIED',
-            value: true
-        }        )
-    }
-*/
-     const uploadCredentialFile = () => {
-        const data = new FormData()
+     const uploadCredentialFile = async() => {
+         
+            console.log("uploading to server");
+            console.log("File read started");
+            let fileObj =  await readFileAsync(selectedCredentialFile);
+            console.log("File read finished");
+            const headers = {
+                'Content-Type': 'application/json',
+              }
+             let formData = JSON.parse(fileObj);
+            console.log(formData);
+          //  formData.append("fileName", fileName);
         const server_url = process.env.REACT_APP_SERVER_URL;
-        data.append('file', selectedCredentialFile)
-        axios.post(server_url, data, { 
+        axios.post(server_url, formData, { headers : headers
            // receive two    parameter endpoint url ,form data
        })
      .then(res => { 

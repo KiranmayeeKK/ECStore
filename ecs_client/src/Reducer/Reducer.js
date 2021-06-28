@@ -1,7 +1,8 @@
 export const initialState = {
     basket:[],
     isVerified: false,
-    selectedCredentialFile: null
+    selectedCredentialFile: null,
+    setErrorMessage: null
 }
 
 const reducer = (state,action) => {
@@ -30,8 +31,14 @@ const reducer = (state,action) => {
             case 'SET_IS_VERIFIED':
                 return {
                     ...state,
-                    isVerified: action.value
+                    isVerified: action.value,
+                    setErrorMessage: null
                    }
+            case 'SET_ERROR_MESSAGE':
+                return {
+                    ...state,
+                    setErrorMessage: action.value
+                    }
     }
 }
 

@@ -1,14 +1,13 @@
 import React from 'react'
 import { useStateValue } from '../Reducer/StateProvider'
 
-import { useHistory } from 'react-router-dom'
 
 import './Product.css'
 
 function Product({id, title, image, price, rating, hasAgeLimit}){
     const [{basket}, dispatch] = useStateValue()
     console.log('basket content', basket)
-    let history = useHistory()
+ //   let history = useHistory()
     const addToBasket = () => {
        /* //check if this is the first item added to the cart, if so redirect to registration page
         if(basket.length == 0) {
@@ -16,6 +15,7 @@ function Product({id, title, image, price, rating, hasAgeLimit}){
         }
         //otherwise add the items to the cart
         else { */
+        /* adds all the information about the selected product to the basket array*/
         dispatch({
         type: 'ADD_TO_BASKET',
         item: {
@@ -29,6 +29,7 @@ function Product({id, title, image, price, rating, hasAgeLimit}){
         })
      //   }
     }
+    {/* renders the necessary information about the item on the home page, information like id and agelimit are skipped*/}
     return (
         <div className="product">
             <div className="product__info">

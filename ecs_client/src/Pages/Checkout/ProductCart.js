@@ -3,7 +3,7 @@ import './ProductCart.css'
 import {useStateValue} from './../../Reducer/StateProvider'
 
 function ProductCart({id,title,image,price,rating,hasAgeLimit}){
-    const [{basket, isVerified}, dispatch] = useStateValue()
+    const [{isVerified}, dispatch] = useStateValue()
 
     const removeItem =() => {
         dispatch({

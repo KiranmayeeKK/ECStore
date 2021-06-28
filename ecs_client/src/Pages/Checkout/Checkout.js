@@ -12,7 +12,8 @@ function Checkout(){
     return (
         <div className="checkout">
             <div className="checkout__left">
-           {
+           { 
+           /*  If shopping cart is empty, the blow text is rendered and a link to home page is provided */
                basket.length === 0 ? (
                    <div>
                        <h2 clasName="checkout__title">Your shopping cart is empty</h2>
@@ -20,6 +21,7 @@ function Checkout(){
                        <Link to = "/"> Back to shopping</Link>
                     </div>
                ) : (
+               /* If there are items in the cart, the cart items are displayed*/
                    <div>
                        <h2 className="shoppingbaskettitle">Items in the basket</h2>
                        {

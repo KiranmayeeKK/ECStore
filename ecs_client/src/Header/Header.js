@@ -12,7 +12,7 @@ import { useStateValue } from '../Reducer/StateProvider'
 
 function Header(){
 
-    const[{basket}, dispatch] = useStateValue();
+    const[{basket}] = useStateValue();
 
     return(
         <nav className="header">

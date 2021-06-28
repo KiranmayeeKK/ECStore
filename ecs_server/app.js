@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var testAPIRouter = require('./routes/testAPI');
 var checkCredentialAPIRouter = require('./routes/checkCredentialAPI')
 const fileupload = require("express-fileupload");
 var app = express();
@@ -26,7 +25,6 @@ app.use(fileupload());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/testAPI', testAPIRouter)
 app.use('/checkCredential', checkCredentialAPIRouter)
 
 
